@@ -1,0 +1,1 @@
+create TABLE russian_names(id INT NOT NULL,name VARCHAR(50) NOT NULL,sex VARCHAR(50) NOT NULL)

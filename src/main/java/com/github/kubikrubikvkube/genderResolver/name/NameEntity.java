@@ -1,4 +1,3 @@
-
 package com.github.kubikrubikvkube.genderResolver.name;
 
 import javax.persistence.Entity;

@@ -15,9 +15,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 @SpringBootTest
-class GenderResolverApplicationTests {
+class NameRepositoryTests {
     @Autowired
-    NameRepository nameRepository;
+    private NameRepository nameRepository;
 
     @Test
     void contextLoads() {

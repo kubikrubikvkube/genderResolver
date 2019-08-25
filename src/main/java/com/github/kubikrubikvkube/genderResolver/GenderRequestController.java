@@ -19,11 +19,13 @@ public class GenderRequestController {
 
     @RequestMapping("/name-resolver")
     public ResponseEntity resolve(@RequestParam NameRequest name) {
+        System.out.println(name);
         Optional<ErrorMessage> validationResult = NameRequestValidator.validate(name);
         if (validationResult.isPresent()) {
             ErrorMessage errorMessage = validationResult.get();
             return ResponseEntity.badRequest().body(errorMessage);
         }
+
         String resolved_sex = nameRepository.findSexByName(name.getName());
         Gender resolved_gender = Gender.fromString(resolved_sex);
         GenderResponse genderResponse = new GenderResponse(resolved_gender);

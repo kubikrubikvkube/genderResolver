@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class GenderResolverApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GenderResolverApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(GenderResolverApplication.class, args);
+    }
 
 }

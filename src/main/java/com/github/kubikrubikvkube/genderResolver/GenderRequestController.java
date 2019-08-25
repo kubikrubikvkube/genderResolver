@@ -19,7 +19,6 @@ public class GenderRequestController {
 
     @RequestMapping("/name-resolver")
     public ResponseEntity resolve(@RequestParam NameRequest name) {
-        System.out.println(name);
         Optional<ErrorMessage> validationResult = NameRequestValidator.validate(name);
         if (validationResult.isPresent()) {
             ErrorMessage errorMessage = validationResult.get();

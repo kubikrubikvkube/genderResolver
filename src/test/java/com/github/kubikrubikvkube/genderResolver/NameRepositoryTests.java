@@ -20,10 +20,6 @@ class NameRepositoryTests {
     private NameRepository nameRepository;
 
     @Test
-    void contextLoads() {
-    }
-
-    @Test
     void connectionToH2DBEstablished() {
         Collection<NameEntity> all = nameRepository.findAll();
         assertThat(all.size(), greaterThan(0));

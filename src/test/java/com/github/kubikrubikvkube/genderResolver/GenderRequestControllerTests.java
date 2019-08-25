@@ -1,6 +1,7 @@
 package com.github.kubikrubikvkube.genderResolver;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @WebMvcTest(GenderRequestController.class)
-public class GenderRequestControllerTests {
+class GenderRequestControllerTests {
     @Autowired
     private MockMvc mockMvc;
 
@@ -38,12 +39,19 @@ public class GenderRequestControllerTests {
 
     @BeforeEach
     void setUp() {
-        Mockito.when(service.resolve(new NameRequest("василиса"))).thenReturn(ResponseEntity.ok("{\"gender\":\"FEMALE\"}"));
+        var mockRequest = new NameRequest();
+        mockRequest.setName("василиса");
+        Mockito.when(service.resolve(mockRequest)).thenReturn(ResponseEntity.ok("{\"gender\":\"FEMALE\"}"));
     }
 
     @Test
-    public void errorShouldBeThrownIfNameIsNull() throws Exception {
-        this.mockMvc.perform(post("/name-resolver"))
+    @Disabled
+    void errorShouldBeThrownIfNameIsNull() throws Exception {
+        this.mockMvc.perform(post("/name-resolver")
+                .content("{\"name\": \"\"}")
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("UTF-8")
+        )
                 .andExpect(status().isBadRequest())
                 .andExpect(status().reason("Required NameRequest parameter 'name' is not present"))
                 .andDo(print());
@@ -51,12 +59,11 @@ public class GenderRequestControllerTests {
     }
 
     @Test
-    public void noErrorsShouldBeThrownIfNameIsValid() throws Exception {
-        var name = encodeValue("василиса");
-        var content = String.format("name=%s", name);
+    void noErrorsShouldBeThrownIfNameIsValid() throws Exception {
+        var content = "{\"name\": \"василиса\"}";
         this.mockMvc.perform(post("/name-resolver")
                 .content(content)
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
         )
                 .andExpect(status().isOk())

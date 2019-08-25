@@ -1,8 +1,11 @@
 package com.github.kubikrubikvkube.genderResolver;
 
-import lombok.Value;
+import lombok.Data;
 
-@Value
+/**
+ * NameRequest
+ */
+@Data
 public class NameRequest {
     private String name;
 }

@@ -1,1 +1,2 @@
-create TABLE russian_names(id INT NOT NULL,name VARCHAR(50) NOT NULL,sex VARCHAR(50) NOT NULL)
+CREATE TABLE russian_names(id INT NOT NULL,name VARCHAR(25) NOT NULL,sex VARCHAR(1) NOT NULL);
+CREATE UNIQUE INDEX PUBLIC.IDX ON PUBLIC.russian_names ( id, name,sex)

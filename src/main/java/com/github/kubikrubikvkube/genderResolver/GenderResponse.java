@@ -3,7 +3,10 @@ package com.github.kubikrubikvkube.genderResolver;
 import lombok.Value;
 
 
+/**
+ * GenderResponse
+ */
 @Value
-public class GenderResponse {
+class GenderResponse {
     public Gender gender;
 }

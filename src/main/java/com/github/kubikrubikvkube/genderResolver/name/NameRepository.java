@@ -28,6 +28,6 @@ public interface NameRepository extends Repository<NameEntity, Long> {
      * @param name name, e.x. "Василиса"
      * @return resolved gender, e.x. "Ж"
      */
-    @Query(value = "SELECT sex FROM public.russian_names WHERE name ILIKE ?1", nativeQuery = true)
+    @Query(value = "SELECT sex FROM public.russian_names WHERE name ILIKE ?1 LIMIT 1", nativeQuery = true)
     String findSexByName(String name);
 }

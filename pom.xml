@@ -16,6 +16,8 @@
 
     <properties>
         <java.version>12</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
@@ -66,6 +68,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.github.kubikrubikvkube.genderResolver.GenderResolverApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

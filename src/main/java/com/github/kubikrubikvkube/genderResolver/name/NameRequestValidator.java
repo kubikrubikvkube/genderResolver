@@ -26,10 +26,6 @@ public class NameRequestValidator {
             return Optional.of(new ErrorMessage("name shouldn't be empty"));
         } else if (name.isBlank()) {
             return Optional.of(new ErrorMessage("name shouldn't be blank"));
-        } else if (name.chars().anyMatch(Character::isDigit)) {
-            return Optional.of(new ErrorMessage("name shouldn't contain any digits"));
-        } else if (name.chars().mapToObj(c -> (char) c).map(String::valueOf).anyMatch(notCyrillicSymbolPredicate)) {
-            return Optional.of(new ErrorMessage("name shouldn't contain non-cyrillic characters"));
         } else {
             return Optional.empty();
         }
